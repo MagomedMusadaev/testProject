@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package telegram;
+
+option go_package = "./proto";
+
+// Service definition
+service TelegramService {
+  rpc CheckUserInChannel (CheckUserRequest) returns (CheckUserResponse);
+}
+
+// Request message containing user and channel information
+message CheckUserRequest {
+  string bot_token = 1;
+  string channel_link = 2;
+  int64 user_id = 3;
+}
+
+// Response message containing the result
+message CheckUserResponse {
+  bool is_member = 1;
+  string error = 2;
+}
